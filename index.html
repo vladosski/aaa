@@ -10,6 +10,7 @@
             font-family: 'Arial', sans-serif;
             text-align: center;
             padding: 50px;
+            overflow: hidden;
         }
 
         h1 {
@@ -19,14 +20,15 @@
 
         .heart {
             color: #ff4d4d;
-            font-size: 5em;
-            animation: pulse 1s infinite;
+            font-size: 3em;
+            animation: float 3s infinite ease-in-out;
+            position: absolute;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
         }
 
         .btn-container {
@@ -50,29 +52,50 @@
 
         #noBtn {
             position: absolute;
+            pointer-events: none; /* Face butonul imposibil de apăsat */
+        }
+
+        #surpriseImage {
+            display: none;
+            margin-top: 20px;
+            max-width: 80%;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
 <body>
-    <h1>Vrei să fii Valentina meu? ❤️</h1>
-    <div class="heart">💖</div>
+    <h1>Vrei să fii Valentine-ul meu? ❤️</h1>
+
+    <div class="heart" style="top: 10%; left: 20%;">💖</div>
+    <div class="heart" style="top: 30%; left: 70%;">💘</div>
+    <div class="heart" style="top: 40%; left: 30%;">💕</div>
+    <div class="heart" style="top: 50%; left: 60%;">💓</div>
+
     <div class="btn-container">
         <button onclick="showMessage()">Da!</button>
-        <button id="noBtn" onmouseover="moveButton()">Nu</button>
+        <button id="noBtn">Nu</button>
     </div>
 
+    <img id="surpriseImage" src="c5dada70-c4be-4860-953e-aacf98b9de47.jpg" alt="TE IUBESC💘">
+
     <script>
+        const button = document.getElementById('noBtn');
+
         function showMessage() {
-            alert('Știam eu că vei spune DA! 💕');
+            alert('Nici nu ma asteptam la alt rasp! 💕');
+            document.getElementById('surpriseImage').style.display = 'block';
         }
 
         function moveButton() {
-            const button = document.getElementById('noBtn');
             const x = Math.random() * (window.innerWidth - button.offsetWidth);
             const y = Math.random() * (window.innerHeight - button.offsetHeight);
             button.style.left = `${x}px`;
             button.style.top = `${y}px`;
         }
+
+        // Butonul "Nu" continuă să se miște constant
+        setInterval(moveButton, 800);
     </script>
 </body>
 </html>
