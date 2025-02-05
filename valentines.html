@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vrei să fii Valentine-ul meu?</title>
+    <style>
+        body {
+            background-color: #ffe6e6;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #d6336c;
+            font-size: 3em;
+        }
+
+        .heart {
+            color: #ff4d4d;
+            font-size: 5em;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .btn-container {
+            margin-top: 30px;
+        }
+
+        button {
+            background-color: #d6336c;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff4d4d;
+        }
+
+        #noBtn {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vrei să fii Valentine-ul meu? ❤️</h1>
+    <div class="heart">💖</div>
+    <div class="btn-container">
+        <button onclick="showMessage()">Da!</button>
+        <button id="noBtn" onmouseover="moveButton()">Nu</button>
+    </div>
+
+    <script>
+        function showMessage() {
+            alert('Știam eu că vei spune DA! 💕');
+        }
+
+        function moveButton() {
+            const button = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - button.offsetWidth);
+            const y = Math.random() * (window.innerHeight - button.offsetHeight);
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
+        }
+    </script>
+</body>
+</html>
